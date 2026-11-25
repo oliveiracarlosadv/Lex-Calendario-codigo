@@ -1,0 +1,17 @@
+Lex Calendário — Linux
+======================
+
+1. Extraia o pacote:  tar -xzf LexCalendario-Linux.tar.gz
+2. Dê dois cliques em "Lex Calendário" (ou execute ./"Lex Calendário" no terminal).
+
+O instalador cria a pasta Documentos/Lex Calendário, copia todos os arquivos,
+cria o atalho na Área de Trabalho e no menu de aplicativos e abre o app.
+
+No GNOME, se o atalho da Área de Trabalho aparecer com um "X", clique com o
+botão direito sobre ele > "Permitir execução".
+
+Atualizar: no app, Configurações > Aplicativo > "Atualizar a partir do arquivo" e escolha o
+.tar.gz da nova versão. Os dados são mantidos.
+
+Desinstalar: execute "Desinstalar Lex Calendário.sh" ou, no app, Configurações >
+Aplicativo > Desinstalar. Você escolhe remover só o aplicativo ou também todos os dados.

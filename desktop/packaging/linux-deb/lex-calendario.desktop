@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Lex Calendário
+Comment=Agenda jurídica inteligente para advogados
+Exec="/opt/lex-calendario/Lex Calendário"
+Icon=lex-calendario
+Terminal=false
+Categories=Office;Calendar;
+StartupWMClass=lex-calendario

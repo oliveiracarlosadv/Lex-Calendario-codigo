@@ -1,0 +1,26 @@
+#!/bin/bash
+# Lex Calendário — passo final do instalador .pkg (roda como administrador).
+# O assistente deixou o app numa pasta temporária; aqui o inicializador do Lex roda como o
+# usuário que está usando o Mac: copia para Aplicativos, fixa no Dock, registra o início
+# automático, atualiza versões anteriores mantendo os dados e abre o app.
+STAGE="/private/tmp/lex-calendario-instalador"
+APP="$STAGE/LexCalendario.app"  # nome sem acento: o pkgbuild não aceita acentos aqui
+LOG="/private/tmp/lex-calendario-instalador.log"
+
+USER_NAME=$(stat -f%Su /dev/console)
+if [ -z "$USER_NAME" ] || [ "$USER_NAME" = "root" ] || [ "$USER_NAME" = "loginwindow" ]; then
+  echo "nenhum usuário com sessão aberta" >>"$LOG"
+  exit 1
+fi
+USER_ID=$(id -u "$USER_NAME")
+USER_HOME=$(dscl . -read "/Users/$USER_NAME" NFSHomeDirectory | awk '{print $2}')
+
+# O usuário precisa conseguir ler o app temporário
+chmod -R a+rX "$STAGE"
+
+launchctl asuser "$USER_ID" sudo -u "$USER_NAME" -H env HOME="$USER_HOME" \
+  "$APP/Contents/MacOS/LexCalendario" >>"$LOG" 2>&1
+STATUS=$?
+
+rm -rf "$STAGE"
+exit $STATUS

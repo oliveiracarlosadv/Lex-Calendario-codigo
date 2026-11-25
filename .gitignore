@@ -1,0 +1,20 @@
+node_modules
+.next
+out
+build
+coverage
+.env
+.env.local
+.env.*.local
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+supabase/.temp
+supabase/.branches
+
+# Credenciais OAuth baixadas do Google Cloud / Microsoft — nunca versionar
+client_secret*.json
+*.pem
+*.p12
+*.pfx

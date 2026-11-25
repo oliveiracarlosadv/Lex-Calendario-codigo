@@ -1,0 +1,11 @@
+Package: lex-calendario
+Version: __VERSION__
+Section: office
+Priority: optional
+Architecture: amd64
+Maintainer: Lex Tecnologias
+Homepage: https://lextecnologias.com.br
+Description: Lex Calendário — agenda jurídica para advogados
+ Audiências, prazos, tarefas e processos num calendário simples.
+ Funciona sem internet e sem conta; o login serve só para sincronizar
+ com o Google Agenda.

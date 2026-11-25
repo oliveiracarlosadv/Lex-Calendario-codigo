@@ -1,0 +1,27 @@
+Lex Calendário — macOS
+======================
+
+1. Dê dois cliques em "Lex Calendário.app".
+   Na primeira vez, se o macOS avisar que o app é de um desenvolvedor não
+   identificado: clique com o botão direito no app > Abrir > Abrir.
+
+2. O instalador copia o Lex Calendário para a pasta Aplicativos (como os
+   apps do sistema: aparece no Launchpad e no Spotlight), adiciona o ícone ao
+   Dock e cria a pasta "Documentos/Lex Calendário/dados" para os seus dados.
+   Depois, o app abre automaticamente.
+
+3. Nas próximas vezes, use o ícone do Dock. Pode apagar o arquivo baixado.
+
+Lembretes: o Lex Calendário fica ativo em segundo plano e inicia junto com o Mac
+para avisar dos compromissos na Central de Notificações. Para encerrar, use
+Sair do Lex Calendário no menu do seu nome (canto inferior esquerdo do app).
+
+Seus dados ficam em ~/Library/Application Support/Lex Calendário (backups em
+Documentos/Lex Calendário/backups).
+
+Atualizar: no app, Configurações > Aplicativo > "Atualizar a partir do arquivo" e
+escolha o .zip da nova versão (ou dê dois cliques no app da nova versão). Os dados são mantidos.
+
+Desinstalar: dê dois cliques em "Desinstalar Lex Calendário.command" (na primeira vez,
+botão direito > Abrir) ou, no app, Configurações > Aplicativo > Desinstalar. Você escolhe
+remover só o aplicativo ou também todos os dados (que vão para a Lixeira).

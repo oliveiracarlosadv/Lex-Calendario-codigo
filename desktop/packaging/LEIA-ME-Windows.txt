@@ -1,0 +1,28 @@
+Lex Calendário — Windows
+========================
+
+1. Extraia o arquivo .zip (botão direito > Extrair tudo).
+2. Dê dois cliques em "Lex Calendário.exe".
+   Se o Windows SmartScreen aparecer: "Mais informações" > "Executar assim mesmo".
+
+O instalador:
+  • cria a pasta Documentos\Lex Calendário e copia todos os arquivos;
+  • cria atalhos na Área de Trabalho, no Menu Iniciar e na barra de tarefas;
+  • abre o aplicativo.
+
+Observação: no Windows 11, a Microsoft pode bloquear a fixação automática na
+barra de tarefas. Nesse caso, clique com o botão direito no atalho da Área de
+Trabalho > "Mostrar mais opções" > "Fixar na barra de tarefas".
+
+Lembretes: o app fica ativo em segundo plano e inicia com o Windows para mostrar
+as notificações. Para encerrar: menu do seu nome > Sair do Lex Calendário.
+
+Seus ajustes ficam em Documentos\Lex Calendário\dados.
+
+Atualizar: no app, Configurações > Aplicativo > "Atualizar a partir do arquivo" e escolha o
+.zip da nova versão. Os dados são mantidos.
+
+Desinstalar: Configurações do Windows > Aplicativos > Lex Calendário > Desinstalar,
+ou dê dois cliques em "Desinstalar Lex Calendário.cmd", ou no app, Configurações >
+Aplicativo > Desinstalar. Você escolhe remover só o aplicativo ou também todos os dados
+(que vão para a Lixeira).

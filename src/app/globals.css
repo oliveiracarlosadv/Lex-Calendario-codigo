@@ -1,0 +1,404 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────── Tokens (inspirados no Apple Calendar) ─────────────── */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 3% 11%;
+    --surface: 240 10% 98.5%;
+    --sidebar: 240 9% 97.3%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 3% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 3% 11%;
+    --primary: 82 39% 30%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 6% 95%;
+    --secondary-foreground: 240 3% 15%;
+    --muted: 240 6% 95%;
+    --muted-foreground: 240 2% 44%;
+    --accent: 240 6% 94%;
+    --accent-foreground: 240 3% 11%;
+    --destructive: 0 72% 54%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 88%;
+    --ring: 82 39% 35%;
+    --radius: 0.75rem;
+    --today: 0 78% 56%;
+    --grid-line: 240 6% 92%;
+  }
+
+  .dark {
+    --background: 240 4% 8%;
+    --foreground: 240 5% 96%;
+    --surface: 240 4% 10%;
+    --sidebar: 240 4% 11%;
+    --card: 240 4% 11%;
+    --card-foreground: 240 5% 96%;
+    --popover: 240 4% 13%;
+    --popover-foreground: 240 5% 96%;
+    --primary: 78 45% 64%;
+    --primary-foreground: 82 45% 10%;
+    --secondary: 240 4% 17%;
+    --secondary-foreground: 240 5% 92%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 4% 64%;
+    --accent: 240 4% 18%;
+    --accent-foreground: 240 5% 96%;
+    --destructive: 0 70% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 4% 19%;
+    --input: 240 4% 22%;
+    --ring: 78 45% 64%;
+    --today: 0 80% 62%;
+    --grid-line: 240 4% 16%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    @apply bg-primary/20;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* ─────────────────────── FullCalendar — visual Apple ─────────────────────── */
+.lex-calendar {
+  --fc-border-color: hsl(var(--grid-line));
+  --fc-page-bg-color: hsl(var(--background));
+  --fc-neutral-bg-color: hsl(var(--surface));
+  --fc-today-bg-color: transparent;
+  --fc-now-indicator-color: hsl(var(--today));
+  --fc-event-border-color: transparent;
+  --fc-highlight-color: hsl(var(--primary) / 0.08);
+  --fc-small-font-size: 0.75rem;
+  height: 100%;
+  font-size: 13px;
+}
+.lex-calendar .fc {
+  height: 100%;
+}
+.lex-calendar .fc-scrollgrid,
+.lex-calendar .fc-theme-standard td,
+.lex-calendar .fc-theme-standard th {
+  border-color: var(--fc-border-color);
+}
+.lex-calendar .fc-scrollgrid {
+  border-left: none;
+  border-top: none;
+}
+.lex-calendar .fc-col-header-cell {
+  border-left: none;
+  border-right: none;
+}
+.lex-calendar .fc-col-header-cell-cushion {
+  padding: 10px 4px;
+  font-weight: 500;
+  color: hsl(var(--muted-foreground));
+  text-decoration: none !important;
+}
+.lex-calendar .lex-dayhead {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  justify-content: center;
+}
+.lex-calendar .lex-dayhead-num {
+  font-size: 18px;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  line-height: 1;
+}
+.lex-calendar .fc-day-today .lex-dayhead-num {
+  background: hsl(var(--today));
+  color: #fff;
+  border-radius: 999px;
+  padding: 4px 7px;
+  font-size: 15px;
+}
+.lex-calendar .fc-timegrid-slot {
+  height: 2.75rem;
+  border-bottom: 0;
+}
+.lex-calendar .fc-timegrid-slot-minor {
+  border-top-style: none;
+}
+.lex-calendar .fc-timegrid-slot-label-cushion,
+.lex-calendar .fc-timegrid-axis-cushion {
+  font-size: 11px;
+  color: hsl(var(--muted-foreground));
+  padding-right: 8px;
+}
+.lex-calendar .fc-timegrid-slot-label {
+  vertical-align: top;
+  transform: translateY(-0.55em);
+  border: none;
+}
+.lex-calendar .fc-timegrid-axis {
+  border: none;
+}
+.lex-calendar .fc-timegrid-now-indicator-line {
+  border-width: 1.5px 0 0;
+}
+.lex-calendar .fc-timegrid-now-indicator-arrow {
+  border: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: hsl(var(--today));
+  margin-top: -4.5px;
+  left: auto;
+  right: -5px;
+}
+.lex-calendar .fc-v-event,
+.lex-calendar .fc-h-event {
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+}
+.lex-calendar .fc-v-event {
+  background: color-mix(in srgb, var(--ev-color) 16%, hsl(var(--background)));
+  border-left: 3px solid var(--ev-color);
+}
+.lex-calendar .fc-v-event .fc-event-main {
+  color: color-mix(in srgb, var(--ev-color) 70%, hsl(var(--foreground)));
+  padding: 3px 5px;
+}
+.lex-calendar .fc-h-event {
+  background: var(--ev-color);
+}
+.lex-calendar .fc-h-event .fc-event-main {
+  color: var(--ev-text, #fff);
+  padding: 1px 6px;
+  font-weight: 500;
+}
+.lex-calendar .fc-daygrid-event {
+  margin-top: 2px;
+}
+.lex-calendar .fc-daygrid-dot-event {
+  padding: 1px 4px;
+}
+.lex-calendar .fc-daygrid-dot-event:hover,
+.lex-calendar .fc-daygrid-dot-event.fc-event-mirror {
+  background: hsl(var(--accent));
+}
+.lex-calendar .fc-daygrid-event-dot {
+  border-color: var(--ev-color);
+}
+.lex-calendar .fc-daygrid-day-number {
+  font-size: 13px;
+  padding: 6px 8px;
+  color: hsl(var(--foreground));
+  text-decoration: none !important;
+}
+.lex-calendar .fc-day-other .fc-daygrid-day-number {
+  color: hsl(var(--muted-foreground) / 0.6);
+}
+.lex-calendar .fc-dayGridMonth-view .fc-day-today .fc-daygrid-day-number {
+  background: hsl(var(--today));
+  color: #fff;
+  border-radius: 999px;
+  min-width: 24px;
+  height: 24px;
+  margin: 4px;
+  padding: 0 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.lex-calendar .fc-daygrid-more-link {
+  font-size: 11px;
+  color: hsl(var(--muted-foreground));
+}
+.lex-calendar .fc-event-title {
+  font-weight: 500;
+}
+.lex-calendar .fc-event-time {
+  font-size: 11px;
+  opacity: 0.85;
+}
+.lex-calendar .fc-event.lex-done .fc-event-title {
+  text-decoration: line-through;
+  opacity: 0.9;
+}
+.lex-calendar .fc-event.lex-critical {
+  box-shadow: inset 0 0 0 1px var(--ev-color);
+}
+/* Audiências: sempre em destaque no calendário */
+.lex-calendar .fc-daygrid-event.lex-hearing {
+  margin-top: 3px;
+  border-radius: 6px;
+  box-shadow:
+    0 0 0 1.5px color-mix(in srgb, var(--ev-color) 60%, hsl(var(--foreground))),
+    0 2px 6px -1px color-mix(in srgb, var(--ev-color) 55%, transparent);
+}
+.lex-calendar .fc-daygrid-event.lex-hearing .fc-event-main {
+  padding: 2px 6px;
+}
+.lex-calendar .fc-event.lex-hearing .fc-event-title,
+.lex-calendar .fc-event.lex-hearing .fc-event-time {
+  font-weight: 700;
+  opacity: 1;
+}
+.lex-calendar .fc-v-event.lex-hearing {
+  background: color-mix(in srgb, var(--ev-color) 32%, hsl(var(--background)));
+  border-left-width: 5px;
+  box-shadow: inset 0 0 0 1.5px var(--ev-color);
+}
+.lex-calendar .fc-v-event.lex-hearing .fc-event-main {
+  color: color-mix(in srgb, var(--ev-color) 45%, hsl(var(--foreground)));
+}
+/* Dia com audiência: só a borda do dia na cor da agenda, mais a etiqueta "Audiência" */
+.lex-calendar .fc-daygrid-day.lex-hearing-day .fc-daygrid-day-frame {
+  box-shadow: inset 0 0 0 2px var(--hearing-color);
+  border-radius: 4px;
+}
+.lex-calendar .fc-timegrid-col.lex-hearing-day .fc-timegrid-col-frame {
+  box-shadow: inset 2px 0 0 var(--hearing-color), inset -2px 0 0 var(--hearing-color);
+}
+.lex-calendar .fc-dayGridMonth-view .lex-hearing-day .fc-daygrid-day-top {
+  align-items: center;
+}
+.lex-calendar .fc-dayGridMonth-view .lex-hearing-day .fc-daygrid-day-top::after {
+  content: "Audiência";
+  margin: 5px auto 0 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--hearing-color);
+  color: var(--hearing-text, #fff);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 16px;
+}
+.lex-calendar .fc-dayGridMonth-view .lex-hearing-day.lex-hearing-many .fc-daygrid-day-top::after {
+  content: "Audiências";
+}
+/* Celular: o quadradinho do dia é estreito demais para a etiqueta; fica a borda */
+@media (max-width: 640px) {
+  .lex-calendar .fc-dayGridMonth-view .lex-hearing-day .fc-daygrid-day-top::after {
+    display: none;
+  }
+  .lex-calendar .fc-dayGridMonth-view .fc-event-time,
+  .lex-calendar .fc-dayGridMonth-view .lex-hearing-icon {
+    display: none;
+  }
+  .lex-calendar .fc-dayGridMonth-view .fc-daygrid-event {
+    font-size: 10.5px;
+  }
+  .lex-calendar .fc-dayGridMonth-view .fc-h-event .fc-event-main {
+    padding: 0 3px;
+  }
+}
+.lex-calendar .fc-multimonth .fc-daygrid-day.lex-hearing-day .fc-daygrid-day-frame {
+  box-shadow: inset 0 0 0 1.5px var(--hearing-color);
+}
+.lex-calendar .fc-multimonth {
+  border: none;
+}
+.lex-calendar .fc-multimonth-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: hsl(var(--today));
+  text-align: left;
+  padding: 8px 6px;
+}
+.lex-calendar .fc-multimonth-daygrid {
+  background: transparent;
+}
+.lex-calendar .fc-multimonth-header-table th {
+  font-size: 10px;
+}
+.lex-calendar .fc-multimonth .fc-daygrid-day-number {
+  font-size: 11px;
+  padding: 2px 4px;
+}
+.lex-calendar .fc-multimonth .fc-daygrid-day-events {
+  min-height: 0 !important;
+  display: flex;
+  justify-content: center;
+}
+.lex-calendar .fc-list {
+  border: none;
+}
+.lex-calendar .fc-list-day-cushion {
+  background: hsl(var(--surface));
+}
+.lex-calendar .fc-highlight {
+  border-radius: 6px;
+}
+.lex-calendar .fc-timegrid-col.fc-day-today {
+  background: transparent;
+}
+.lex-calendar .fc-non-business {
+  background: hsl(var(--surface) / 0.6);
+}
+
+/* ─────────────────────────── Editor rico ─────────────────────────── */
+.lex-editor .ProseMirror {
+  outline: none;
+  min-height: 220px;
+}
+.lex-editor .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: hsl(var(--muted-foreground) / 0.7);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.lex-editor ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0.25rem;
+}
+.lex-editor ul[data-type="taskList"] li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+.lex-editor ul[data-type="taskList"] li > label {
+  margin-top: 0.3rem;
+}
+.lex-editor ul[data-type="taskList"] li[data-checked="true"] > div {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+.lex-editor table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+.lex-editor th,
+.lex-editor td {
+  border: 1px solid hsl(var(--border));
+  padding: 6px 8px;
+  vertical-align: top;
+}
+.lex-editor th {
+  background: hsl(var(--surface));
+  font-weight: 600;
+}
+.lex-editor .selectedCell {
+  background: hsl(var(--primary) / 0.08);
+}
